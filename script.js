@@ -1,26 +1,28 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-// var hour = $('#hour-9')
-// var thingsToDo = $('.description')
+//load wrapper
+$(window).on('load', function() {
 
-$('.savebtn').on('click', function () {
-  localStorage.setItem('time', this)
-  localStorage.setItem('toDo', this)
-})
+$('.saveBtn').on('click', function (event) {
+  event.preventDefault;
+  
+  var hour = ($(this).parent().attr("id")); 
+  var thingsToDo = ($(this).siblings('textarea').val());
+  console.log($(this).siblings('textarea').val(thingsToDo))
+  console.log($(this).parent().attr("id"))
+  
+  localStorage.setItem(JSON.stringify(hour), JSON.stringify(thingsToDo))
 
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
+  function renderSchedule() {
+    // Use JSON.parse() to convert text to JavaScript object
+  //  var savedTime = localStorage.getItem(JSON.parse(hour))
+   
+    var savedList = localStorage.getItem(JSON.parse(thingsToDo));
+      $(this).siblings('textarea').innerHTML = savedlist
 
-  // $( "li" ).each(function( index ) {
-  //   console.log( index + ": " + $( this ).text() );
-  // });
-
+    // ($(this).siblings('textarea').val(savedList)).innerHTML
+    // ($(this).parent().attr("id")).innerHTML = savedSchedule.hour;
+    //  else {
+    //   return;
+  }
 
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
@@ -34,14 +36,13 @@ $('.savebtn').on('click', function () {
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-
-$(document).ready(function () {
-  localStorage.getItem('time', this)
-  localStorage.getItem('toDo', this)
-})
+  
   //
   // TODO: Add code to display the current date in the header of the page.
   var now = dayjs();
   $('#currentDay').text(now.format('dddd, MMMM D, YYYY'));
   console.log(now);
   $('#currentDay').css("font-size", "50px");
+
+renderSchedule()
+  )}
