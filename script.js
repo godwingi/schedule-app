@@ -15,8 +15,8 @@ $('.saveBtn').on('click', function (event) {
     // Use JSON.parse() to convert text to JavaScript object
   //  var savedTime = localStorage.getItem(JSON.parse(hour))
    
-    JSON.parse(localStorage.getItem(thingsToDo));
-    console.log(thingsToDo)
+    var savedList = JSON.parse(localStorage.getItem(hour, thingsToDo));
+    console.log(savedList.hour, savedList.things)
         $(this).siblings('textarea').innerHTML = thingsToDo
         console.log(thingsToDo)
     
