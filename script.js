@@ -15,15 +15,21 @@ $('.saveBtn').on('click', function (event) {
     // Use JSON.parse() to convert text to JavaScript object
   //  var savedTime = localStorage.getItem(JSON.parse(hour))
    
-    var savedList = localStorage.getItem(JSON.parse(thingsToDo));
-      $(this).siblings('textarea').innerHTML = savedlist
+    JSON.parse(localStorage.getItem(thingsToDo));
+    console.log(thingsToDo)
+        $(this).siblings('textarea').innerHTML = thingsToDo
+        console.log(thingsToDo)
+    
+    JSON.parse(localStorage.getItem(hour));
+    console.log(hour)
+    
 
     // ($(this).siblings('textarea').val(savedList)).innerHTML
     // ($(this).parent().attr("id")).innerHTML = savedSchedule.hour;
     //  else {
     //   return;
+  
   }
-
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -45,4 +51,4 @@ $('.saveBtn').on('click', function (event) {
   $('#currentDay').css("font-size", "50px");
 
 renderSchedule()
-  )}
+})})
