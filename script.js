@@ -1,6 +1,9 @@
 //load wrapper
-$(window).on('load', function() {
+document.querySelector('.description-9').innerHTML = localStorage.getItem('hour-9');
 
+
+
+$(window).on('load', function() {
 $('.saveBtn').on('click', function (event) {
   event.preventDefault;
   
@@ -12,22 +15,9 @@ $('.saveBtn').on('click', function (event) {
   localStorage.setItem(JSON.stringify(hour), JSON.stringify(thingsToDo))
 
   function renderSchedule() {
-    // Use JSON.parse() to convert text to JavaScript object
-  //  var savedTime = localStorage.getItem(JSON.parse(hour))
-   
-    var savedList = JSON.parse(localStorage.getItem(hour, thingsToDo));
-    console.log(savedList.hour, savedList.things)
-        $(this).siblings('textarea').innerHTML = thingsToDo
-        console.log(thingsToDo)
-    
-    JSON.parse(localStorage.getItem(hour));
-    console.log(hour)
-    
 
-    // ($(this).siblings('textarea').val(savedList)).innerHTML
-    // ($(this).parent().attr("id")).innerHTML = savedSchedule.hour;
-    //  else {
-    //   return;
+    var savedList = JSON.parse(localStorage.getItem('hour-9'));
+      console.log(savedList);
   
   }
   // TODO: Add code to apply the past, present, or future class to each time
