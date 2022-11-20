@@ -13,10 +13,9 @@ document.querySelector('.description-7').innerHTML = localStorage.getItem('hour-
 document.querySelector('.description-8').innerHTML = localStorage.getItem('hour-20');
 document.querySelector('.description-9').innerHTML = localStorage.getItem('hour-21');
 
-checkCurrentTime();
 
 $(window).on('load', function () {
-
+  checkCurrentTime();
 //Retrieve saved items from local storage
   function renderSchedule(hour) {
 
@@ -39,7 +38,7 @@ $('.saveBtn').on('click', function (event) {
     renderSchedule(hour)
     console.log(hour)
 });
-})
+
 
 //Display Current Date
 var now = dayjs();
@@ -73,3 +72,4 @@ function checkCurrentTime () {
       $(this).addClass(".future")
   }}
 )}
+})
