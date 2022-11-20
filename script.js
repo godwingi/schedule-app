@@ -60,16 +60,16 @@ function checkCurrentTime () {
  console.log(blockTime)
 
     if (blockTime < currentHour ) {
-      $(this).addClass(".past")
+      $(this).addClass("past")
     } 
     else if (blockTime === currentHour) {
-      $(this).removeClass(".future")
-      $(this).addClass(".present")
+      $(this).removeClass("future")
+      $(this).addClass("present")
     } 
-    else; {
-      $(this).removeClass(".past")
-      $(this).removeClass(".present")
-      $(this).addClass(".future")
+    else {
+      $(this).removeClass("past")
+      $(this).removeClass("present")
+      $(this).addClass("future")
   }}
 )}
 })
