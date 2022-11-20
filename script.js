@@ -52,16 +52,18 @@ function checkCurrentTime () {
   let currentHour = dayjs().hour()
   console.log(currentHour)
   
- let blockTime = ($(this).parent().attr("id"))
+  $('.time-block').each(function() {
+ let blockTime = parseInt(
+    $(this)
+      .attr('id')
+      .split('-')[1]
+ )
  console.log(blockTime)
 
     if (blockTime < currentHour ) {
-      $(this).removeClass(".future")
-      $(this).removeClass(".present")
       $(this).addClass(".past")
     } 
-    else if (blockTime == currentHour) {
-      $(this).removeClass(".past")
+    else if (blockTime === currentHour) {
       $(this).removeClass(".future")
       $(this).addClass(".present")
     } 
@@ -69,5 +71,5 @@ function checkCurrentTime () {
       $(this).removeClass(".past")
       $(this).removeClass(".present")
       $(this).addClass(".future")
-}
-}
+  }}
+)}
