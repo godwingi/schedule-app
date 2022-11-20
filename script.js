@@ -1,18 +1,19 @@
 //load wrapper
-document.querySelector('.description-9').innerHTML = localStorage.getItem('9');
-document.querySelector('.description-10').innerHTML = localStorage.getItem('10');
-document.querySelector('.description-11').innerHTML = localStorage.getItem('11');
-document.querySelector('.description-12').innerHTML = localStorage.getItem('12');
-document.querySelector('.description-1').innerHTML = localStorage.getItem('13');
-document.querySelector('.description-2').innerHTML = localStorage.getItem('14');
-document.querySelector('.description-3').innerHTML = localStorage.getItem('15');
-document.querySelector('.description-4').innerHTML = localStorage.getItem('16');
-document.querySelector('.description-5').innerHTML = localStorage.getItem('17');
-document.querySelector('.description-6').innerHTML = localStorage.getItem('18');
-document.querySelector('.description-7').innerHTML = localStorage.getItem('19');
-document.querySelector('.description-8').innerHTML = localStorage.getItem('20');
-document.querySelector('.description-9').innerHTML = localStorage.getItem('21');
+document.querySelector('.description-9').innerHTML = localStorage.getItem('hour-9');
+document.querySelector('.description-10').innerHTML = localStorage.getItem('hour-10');
+document.querySelector('.description-11').innerHTML = localStorage.getItem('hour-11');
+document.querySelector('.description-12').innerHTML = localStorage.getItem('hour-12');
+document.querySelector('.description-1').innerHTML = localStorage.getItem('hour-13');
+document.querySelector('.description-2').innerHTML = localStorage.getItem('hour-14');
+document.querySelector('.description-3').innerHTML = localStorage.getItem('hour-15');
+document.querySelector('.description-4').innerHTML = localStorage.getItem('hour-16');
+document.querySelector('.description-5').innerHTML = localStorage.getItem('hour-17');
+document.querySelector('.description-6').innerHTML = localStorage.getItem('hour-18');
+document.querySelector('.description-7').innerHTML = localStorage.getItem('hour-19');
+document.querySelector('.description-8').innerHTML = localStorage.getItem('hour-20');
+document.querySelector('.description-9').innerHTML = localStorage.getItem('hour-21');
 
+checkCurrentTime();
 
 $(window).on('load', function () {
 
@@ -36,63 +37,37 @@ $('.saveBtn').on('click', function (event) {
     localStorage.setItem(hour, JSON.stringify(thingsToDo))
 
     renderSchedule(hour)
+    console.log(hour)
 });
-    // TODO: Add code to apply the past, present, or future class to each time
-    // block by comparing the id to the current hour. HINTS: How can the id
-    // attribute of each time-block be used to conditionally add or remove the
-    // past, present, and future classes? How can Day.js be used to get the
-    // current hour in 24-hour time?
-
-    // dayjs().hour() // gets current hour
-    // newDate = dayjs().hour(12) // returns new dayjs object
-
-    // if(dayjs().hour() === ) {
-
-    // }
-
-    // const minMax = window.dayjs_plugin_minMax;
-    // const isBetween = window.dayjs_plugin_isBetween;
-    // dayjs.extend(minMax);
-    // dayjs.extend(isBetween);
-    // console.log(
-    //   "MAX: ",
-    //   dayjs.max(dayjs(), dayjs("2022-11-17", 'h'), dayjs("2022-11-2050"))
-    // );
-    // console.log(
-    //   "MIN: ",
-    //   dayjs.min(dayjs(), dayjs("2022-11-17"), dayjs("2022-11-2050"))
-    // );
-    // console.log(
-    //   "BETWEEN: ",
-    //   dayjs("2022-11-17").isBetween("2022-11-2050", "h", null, "[)")
-    // );
-
-    let currentHour = dayjs().hour()
-    console.log(currentHour)
-    
-   var blockTime = ($(this).parent().attr("id"))
-   console.log(blockTime)
-  
-      if (blockTime < currentHour ) {
-        $(this).removeClass(".future")
-        $(this).removeClass(".present")
-        $(this).addClass(".past")
-      } 
-      else if (blockTime == currentHour) {
-        $(this).removeClass(".past")
-        $(this).removeClass(".future")
-        $(this).addClass(".present")
-      } 
-      else; {
-        $(this).removeClass(".past")
-        $(this).removeClass(".present")
-        $(this).addClass(".future")
-  }
-}
-  )
+})
 
 //Display Current Date
 var now = dayjs();
 $('#currentDay').text(now.format('dddd, MMMM D, YYYY'));
 console.log(now);
 $('#currentDay').css("font-size", "50px");
+
+//Check the time to change classes to past / present or future
+function checkCurrentTime () {
+  let currentHour = dayjs().hour()
+  console.log(currentHour)
+  
+ let blockTime = ($(this).parent().attr("id"))
+ console.log(blockTime)
+
+    if (blockTime < currentHour ) {
+      $(this).removeClass(".future")
+      $(this).removeClass(".present")
+      $(this).addClass(".past")
+    } 
+    else if (blockTime == currentHour) {
+      $(this).removeClass(".past")
+      $(this).removeClass(".future")
+      $(this).addClass(".present")
+    } 
+    else; {
+      $(this).removeClass(".past")
+      $(this).removeClass(".present")
+      $(this).addClass(".future")
+}
+}
